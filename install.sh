@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# apt packages
+#apt packages
 sudo apt-get update
 sudo apt-get snapd git vim neovim xclip wget -y
 
@@ -45,3 +45,6 @@ ssh-add ~/.ssh/id_rsa
 
 #copy ssh pubkey to clipboard
 xclip -sel clip < ~/.ssh/id_rsa.pub
+
+source ~/.bashrc
+
