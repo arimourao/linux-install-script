@@ -8,12 +8,12 @@ sudo apt-get snapd git vim neovim xclip wget curl -y
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb |
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 
-#firefox
-wget -O FirefoxSetup.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
-sudo mkdir /opt/firefox
-tar xjf FirefoxSetup.tar.bz2 -C /opt/firefox/
-mv /usr/lib/firefox-esr/firefox-esr /usr/lib/firefox-esr/firefox-esr_orig
-ln -s /opt/firefox/firefox/firefox /usr/lib/firefox-esr/firefox-esr
+#firefox dev edition
+wget "https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux64&lang=en-US" -O firefox-developer.tar.bz2
+sudo tar -jxvf  firefox-developer.tar.bz2 -C /opt/
+sudo mv /opt/firefox*/ /opt/firefox-developer
+sudo ln -sf /opt/firefox-developer/firefox /usr/bin/firefox-developer
+echo -e '[Desktop Entry]\n Version=59.0.3\n Encoding=UTF-8\n Name=Mozilla Firefox\n Comment=Navegador Web\n Exec=/opt/firefox-developer/firefox\n Icon=/opt/firefox-developer/browser/chrome/icons/default/default128.png\n Type=Application\n Categories=Network' | sudo tee /usr/share/applications/firefox-developer.desktop
 
 #docker
 sudo apt-get install \
