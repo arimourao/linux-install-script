@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #apt packages
-sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade
+sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y
 sudo apt-get snapd git vim neovim xclip wget curl -y
 
 #chrome
@@ -19,7 +19,6 @@ ln -s /opt/firefox/firefox/firefox /usr/lib/firefox-esr/firefox-esr
 sudo apt-get install \
      apt-transport-https \
      ca-certificates \
-     curl \
      gnupg-agent \
      software-properties-common
 
@@ -57,6 +56,9 @@ git clone --depth=1 https://github.com/arimourao/bash-it.git ~/.bash_it
 
 #nvm
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
+
+#create sudo rules for my user
+echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/dont-prompt-$USER-for-password
 
 #generate ssh key
 echo -e "\n\n" | ssh-keygen -t rsa -b 4096 -C "amlima@gmail.com"
