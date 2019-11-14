@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #apt packages
-sudo apt-get update
-sudo apt-get snapd git vim neovim xclip wget -y
+sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade
+sudo apt-get snapd git vim neovim xclip wget curl -y
 
 #chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb |
@@ -15,8 +15,28 @@ tar xjf FirefoxSetup.tar.bz2 -C /opt/firefox/
 mv /usr/lib/firefox-esr/firefox-esr /usr/lib/firefox-esr/firefox-esr_orig
 ln -s /opt/firefox/firefox/firefox /usr/lib/firefox-esr/firefox-esr
 
+#docker
+sudo apt-get install \
+     apt-transport-https \
+     ca-certificates \
+     curl \
+     gnupg-agent \
+     software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo add-apt-repository \
+     "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+#docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
 #snapd packages
-#sleep 2m
 sudo snap code --classic
 sudo snap emacs --classic
 sudo snap skype --classic
