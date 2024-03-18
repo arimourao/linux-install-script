@@ -61,7 +61,7 @@ wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
 echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/dont-prompt-$USER-for-password
 
 #generate ssh key
-yes "\r" | ssh-keygen -t rsa -b 4096 -C "amlima@gmail.com"
+yes "\r" | ssh-keygen -t rsa -b 4096 -C "email"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 
